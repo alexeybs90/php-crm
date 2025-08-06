@@ -2,6 +2,7 @@
 namespace app\modules;
 
 use app\lib\Application;
+use app\lib\Course;
 use app\lib\Helper;
 use app\models\User;
 use app\services\ExcelService;
@@ -17,8 +18,8 @@ class BasePage extends Module
     public $title = '';
     public $isAjax = false;
 
-    public $top_items=array('add'=>'','del'=>'','edit'=>'','print'=>'','exit'=>'');
-    public $course = [];
+    public $top_items = array('add'=>'','del'=>'','edit'=>'','print'=>'','exit'=>'');
+    public array $course = [];
 
     public function doPost()
     {
@@ -54,7 +55,7 @@ class BasePage extends Module
         if ($this->isAuth()) {
             $this->access_level = User::getAccessLevels($this->pageId, $this->user->type_worker_id);
         }
-//        $this->course = Course::getCourse();
+        $this->course = Course::getCourse();
 
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) and $_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest') $this->isAjax = true;
 
