@@ -14,6 +14,7 @@ class Auth extends BasePage {
         //vue component auth
         ?>
         <div id="app">
+            <h2>Авторизация</h2>
             <auth></auth>
         </div>
         <?php

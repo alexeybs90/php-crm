@@ -37,6 +37,7 @@ class Application
             'BotHandler', 'BotInfo', 'PatternFilmXML', 'StampXML',
             'OrderFlexoReportPDF', 'TestPage', 'OrderHPReportPDF'
         ];
+
         User::$crypt_password = Config::CRYPT_PASSWORD;
         $arr = User::login();
         self::$user = $arr['user'];
@@ -77,7 +78,7 @@ class Application
         print 'module not found';
 	}
 
-	public static function run()
+	public static function run(): void
     {
         self::init();
         self::$module?->show();
