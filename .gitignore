@@ -1,0 +1,8 @@
+/vendor
+/node_modules
+/web/css
+/web/js
+/web/images
+/upload
+/.idea
+/fonts
