@@ -1,6 +1,7 @@
 <?php
 namespace app\modules;
 
+use app\lib\Application;
 use app\lib\Helper;
 use app\models\User;
 use app\services\ExcelService;
@@ -49,7 +50,7 @@ class BasePage extends Module
 
     public function init()
     {
-        $this->login();
+        $this->user = Application::$user;
         if ($this->isAuth()) {
             $this->access_level = User::getAccessLevels($this->pageId, $this->user->type_worker_id);
         }

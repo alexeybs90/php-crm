@@ -9,6 +9,7 @@ class Application
     public static $module = null;
 	public static $document_root = null;
 	public static $urlSite = null;
+	public static User $user;
     const MODULE_PATH = 'app\\modules\\';
     const HOME_PAGE_MODULE = 'HomePage';
 
@@ -37,7 +38,9 @@ class Application
             'OrderFlexoReportPDF', 'TestPage', 'OrderHPReportPDF'
         ];
         User::$crypt_password = Config::CRYPT_PASSWORD;
-        User::login();
+        $arr = User::login();
+        self::$user = $arr['user'];
+
 		if (!in_array($pageURL, $pageURLWithNoAuth)
             && !in_array($pageModule, $pageModuleWithNoAuth)
             && !User::isAuth()) {

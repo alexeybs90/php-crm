@@ -11,6 +11,7 @@ class Auth extends BasePage {
 
     public function showContent()
     {
+        //vue component auth
         ?>
         <div id="app">
             <auth></auth>

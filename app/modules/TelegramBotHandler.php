@@ -4,7 +4,7 @@ namespace app\modules;
 use app\lib\Logger;
 use app\lib\TelegramBot;
 
-class BotHandler extends BasePage {
+class TelegramBotHandler extends BasePage {
 
     public function doPost() {
 

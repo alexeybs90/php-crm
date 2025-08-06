@@ -1,6 +1,8 @@
 <?php
 namespace app\lib;
 
+use app\config\Config;
+
 class TelegramBot {
 
     const BOT_ID = '###';
@@ -8,14 +10,10 @@ class TelegramBot {
         'TEST_CHAT_ID' => '###'
     ];
 
-    public static function sendMessage($chatId, $message, $isHTML = 0) {
+    public static function sendMessage($chatId, $message, $isHTML = 0)
+    {
         if (Config::IS_DEV) $chatId = self::CHAT_IDS['TEST_CHAT_ID'];
-        if (Config::IS_DEV && $chatId != self::CHAT_IDS['TEST_CHAT_ID']) return [];
-//    error_reporting(E_ALL & ~E_WARNING);
         error_reporting(E_ALL & ~(E_WARNING|E_NOTICE));
-//        $chatId = self::CHAT_IDS['TEST_CHAT_ID'];
-//        $data = array ('chatId' => $chatId, 'message' => $message, 'isHTML' => $isHTML);
-//        $data = http_build_query($data);
         $sendMessageURL = 'https://api.telegram.org/bot' . self::BOT_ID
             . '/sendMessage?chat_id=' . $chatId . '&text=' . urlencode($message)
             . ($isHTML ? '&parse_mode=HTML' : '');
@@ -31,8 +29,8 @@ class TelegramBot {
         return $sendResult;
     }
 
-    public static function info() {
-//        $ctx = stream_context_create(array('http' => array('timeout' => 5)));
+    public static function info()
+    {
         $ctx = stream_context_create([
             "ssl" => [
                 "verify_peer" => false,

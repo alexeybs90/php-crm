@@ -29,8 +29,6 @@ return [
     'client-tag-print' => 'ClientTagPrint',
     'queues-offset-xls' => 'QueueOffsetReportXLS',
     'sklad-pdf' => 'materialsStoragePDF',
-    'queue-znak-pdf' => 'QueueZnakPDF',
-    'queue-print-xls' => 'QueueZnakXLS',
     '404' => 'Page404',
     'form-lak-offset-xml' => 'FormLakOffsetXML',
     'material-pull-history' => 'MaterialPullHistoryPDF',
