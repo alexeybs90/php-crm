@@ -9,37 +9,36 @@ class Helper
         header("Location: " . $loc);
     }
 
-    public static function dateFormatPoint($date)
+    public static function dateFormatPoint($date): string
     {
-        if($date) {
-            if(strpos($date,' ')) {
-                $val = explode(' ', $date);
-                $date = $val[0];
-            }
-            if (strpos($date, '-')) {
-                $sd = explode("-", $date);
-                $year = $sd[0];
-                $month = $sd[1];
-                $day = $sd[2];
-                $date = $day . '.' . $month . '.' . $year . (isset($val[1]) ? ' ' . $val[1] : '');
-            }
+        if (!$date) return $date;
+        if(strpos($date,' ')) {
+            $val = explode(' ', $date);
+            $date = $val[0];
+        }
+        if (strpos($date, '-')) {
+            $sd = explode("-", $date);
+            $year = $sd[0];
+            $month = $sd[1];
+            $day = $sd[2];
+            $date = $day . '.' . $month . '.' . $year . (isset($val[1]) ? ' ' . $val[1] : '');
         }
         return $date;
     }
 
-    public static function dateFormatMySQL($date) {
-        if($date) {
-            if(strpos($date,' ')) {
-                $val = explode(' ', $date);
-                $date = $val[0];
-            }
-            if(strpos($date,'.')) {
-                $sd = explode(".", $date);
-                $year = $sd[2];
-                $month = $sd[1];
-                $day = $sd[0];
-                $date = $year.'-'.$month.'-'.$day;
-            }
+    public static function dateFormatMySQL($date): string
+    {
+        if (!$date) return $date;
+        if(strpos($date,' ')) {
+            $val = explode(' ', $date);
+            $date = $val[0];
+        }
+        if(strpos($date,'.')) {
+            $sd = explode(".", $date);
+            $year = $sd[2];
+            $month = $sd[1];
+            $day = $sd[0];
+            $date = $year.'-'.$month.'-'.$day;
         }
         return $date;
     }
